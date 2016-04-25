@@ -1,0 +1,25 @@
+public class Solution {
+    public int reverse(int x) {
+        String s=String.valueOf(Math.abs(x));
+		char [] sarray=s.toCharArray();
+		
+		String fuhao="";
+		if (x<0)
+		{
+			fuhao+="-";
+			
+			
+		}
+		
+		String reverse=fuhao;
+		int n=sarray.length;
+		for (int i=n-1;i>=0;i--){
+			reverse+=sarray[i];
+			
+		}
+		int res=Integer.parseInt(reverse);
+		return res;
+		
+        
+    }
+}
