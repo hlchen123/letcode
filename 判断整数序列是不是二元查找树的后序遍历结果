@@ -1,0 +1,52 @@
+package jre;
+public class tree_back_find {
+	static boolean ispostorder(int[] a)
+	{
+		if (a==null)
+		{
+			return false;
+		}
+		if (a.length<=2)
+		{
+			return true;
+		}
+		return ispostorderhelper(a,0,a.length-1);
+	}
+	static boolean ispostorderhelper(int[] a,int s,int e)
+	{
+		int len=a.length;
+		if(!(s>=0&&s<len&&e>=0&&e<len))
+		{
+			return false;
+		}
+		if(s==e||s==e-1)
+		{
+			return true;
+		}
+		int i=e-1;
+		while(a[i]>a[e])i--;
+		if(s<=i&&i<e)
+		{
+			boolean firstPart=ispostorderhelper(a,s,i);
+			boolean secondPart=ispostorderhelper(a,i+1,e-1);
+			return firstPart&&secondPart;
+		}
+		return false;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int [][]a={  
+                {5,7,6,9,11,10,8},  
+                {5,6,7},  
+                {5,7,6},  
+                {1,3,2,5,7,6,4,9,11,10,13,15,14,12,8}};
+		for (int [] each:a)
+		{
+			boolean re=ispostorder(each);
+			System.out.println(re);
+		}
+
+	}
+
+}
